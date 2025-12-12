@@ -43,7 +43,7 @@ Here are summaries of the three tickets in the `tickets` directory, with links t
 
 ## Stretch Ticket
 In addition to the three main tickets, there is also a stretch ticket available:
-
+  
 - **Stretch Ticket: Migrate to Next.js**
   - [Ticket Description](tickets/4_stretchTicketNEXTjs.md)
   - Migrate the current React application to Next.js to leverage server-side rendering, better performance, and routing capabilities.

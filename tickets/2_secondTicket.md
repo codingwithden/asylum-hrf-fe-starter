@@ -5,8 +5,7 @@ To begin work on this ticket, make sure you have finished:
 2. Completed the `Onboarding Module` in your course. 
 3. Completed Build Sprint 1. 
 
-### Objective
-
+### Objective 
 Deliver the following: 
 
 - Integrate this frontend application with an API. 

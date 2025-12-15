@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import testData from '../data/test_data.json';
+// import testData from '../data/test_data.json';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
 
 const AppContext = createContext({});
@@ -12,29 +12,36 @@ const AppContext = createContext({});
  * - Populate the graphs with the stored data
  */
 const useAppContextProvider = () => {
-  const [graphData, setGraphData] = useState(testData);
+  const [graphData, setGraphData] = useState(); // fake data (testData) is loaded, here we want to replace with the real data
   const [isDataLoading, setIsDataLoading] = useState(false);
 
   useLocalStorage({ graphData, setGraphData });
 
-  const getFiscalData = () => {
-    // TODO: Replace this with functionality to retrieve the data from the fiscalSummary endpoint
-    const fiscalDataRes = testData;
-    return fiscalDataRes;
+  const getFiscalData = async () => {
+    // TODO: Replace this with functionality to retrieve the data from the fiscalSummary endpoint - STEP ONE
+    const response = await axios.get('https://asylum-be.onrender.com/fiscalSummary')
+    return response.data;
   };
 
   const getCitizenshipResults = async () => {
     // TODO: Replace this with functionality to retrieve the data from the citizenshipSummary endpoint
-    const citizenshipRes = testData.citizenshipResults;
-    return citizenshipRes;
+    const response = await axios.get('https://asylum-be.onrender.com/citizenshipSummary');
+    return response.data;
   };
 
-  const updateQuery = async () => {
+  const updateQuery = async () => { 
     setIsDataLoading(true);
   };
 
   const fetchData = async () => {
-    // TODO: fetch all the required data and set it to the graphData state
+    // TODO: fetch all the required data and set it to the graphData state - STEP TWO
+    const fiscalData = await getFiscalData();
+    const citizenshipData = await getCitizenshipResults();
+    setGraphData({ // STEP THREE: Updating graph data
+      ...fiscalData, // grabbing the data
+      citizenshipResults: citizenshipData,
+    });
+    setIsDataLoading(false); // in case it fails to catch
   };
 
   const clearQuery = () => {
@@ -48,6 +55,10 @@ const useAppContextProvider = () => {
       fetchData();
     }
   }, [isDataLoading]);
+
+  useEffect(() => {
+    setIsDataLoading(true);
+  }, []);
 
   return {
     graphData,

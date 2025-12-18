@@ -12,10 +12,10 @@ const AppContext = createContext({});
  * - Populate the graphs with the stored data
  */
 const useAppContextProvider = () => {
-  const [graphData, setGraphData] = useState(); // fake data (testData) is loaded, here we want to replace with the real data
+  const [graphData, setGraphData] = useState({}); // fake data (testData) is loaded, here we want to replace with the real data
   const [isDataLoading, setIsDataLoading] = useState(false);
 
-  useLocalStorage({ graphData, setGraphData });
+  // useLocalStorage({ graphData, setGraphData });
 
   const getFiscalData = async () => {
     // TODO: Replace this with functionality to retrieve the data from the fiscalSummary endpoint - STEP ONE

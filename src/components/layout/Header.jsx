@@ -1,6 +1,7 @@
 import Logo from '../../assets/logo.png';
 import { LoggingButtons } from '../../auth/LoggingButtons.jsx';
 import { NavLink } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 /**
  * TODO: Ticket 3:
@@ -8,21 +9,21 @@ import { NavLink } from 'react-router-dom';
  */
 export default function Header() {
   // TODO: Replace me
-  const isAuthenticated = false;
-// turned vertical to stack contents and adjusted sizing and elements
+  const { isAuthenticated } = useAuth0();
   return (
-<header className='w-[100%] primary-c px-14 pt-1 py-4'>
+  <header className='w-[100%] primary-c px-14 pt-1 py-4'>
   <div className='flex justify-between items-center'>
-    <NavLink to='https://www.humanrightsfirst.org/'>
+    <a href='https://www.humanrightsfirst.org/' target='_blank' rel="noreferrer">
       <img className='w-[100px]' src={Logo} alt='HRF logo white' />
-    </NavLink>
-
+    </a>
     <div className='flex items-center gap-16 pt-1'>
       <NavLink to='/' className='nav-btn'>Home</NavLink>
       <NavLink to='/graphs' className='nav-btn'>Graphs</NavLink>
-      {isAuthenticated && (
-        <NavLink to='/profile' className='nav-btn'>Profile</NavLink>
-      )}
+        {isAuthenticated && (
+          <NavLink to='/profile' className='nav-btn'>
+            Profile
+          </NavLink>
+        )}
       <LoggingButtons />
     </div>
   </div>

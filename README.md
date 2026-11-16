@@ -1,5 +1,18 @@
 # Human Rights First: Asylum Report Generator
 
+> **My role (Denisse Medina Flores, BloomTech Labs, Dec 2025)**
+>
+> A real client project for Human Rights First, a nonprofit that helps asylum seekers. I worked on the front end across three sprints, one ticket per sprint:
+>
+> - **Sprint 21:** rebuilt the landing page and header to match the client's design
+> - **Sprint 22:** connected the app to the live asylum case API and replaced test data with real data
+> - **Sprint 23:** added login with Auth0 and built the user profile page
+>
+> Built with React and Vite. The original project brief and setup steps from BloomTech are below.
+
+---
+
+
 ## Problem Statement
 The Human Rights First (HRF) organization currently has a limited ability to provide user-friendly insights into their large dataset of asylum case decisions. Existing tools like the TRAC database have significant limitations, such as the inability to visualize trends over time or compare grant rates across different regions. This makes it difficult for journalists, researchers, and the general public (including asylum seekers and activists) to effectively analyze and draw insights from the data.
 
